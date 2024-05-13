@@ -8,9 +8,10 @@ import { formatCurrency } from "@/lib/formatters";
 import { useState } from "react";
 import { addProduct } from "../../_actions/products";
 import { useFormState, useFormStatus } from "react-dom";
+import { Product } from "@prisma/client";
 
-export default function ProductForm() {
-  const [error, action] = useFormState(addProduct, {})
+export default function ProductForm({ product }: { product?: Product | null}) {
+  const [error, action] = useFormState(addProduct, {});
   const [priceInCents, setPriceInCents] = useState<number>();
 
   return (
@@ -33,12 +34,16 @@ export default function ProductForm() {
         <div className="text-muted-foreground">
           {formatCurrency((priceInCents || 0) / 100)}
         </div>
-        {error.priceInCents && <div className="text-destructive">{error.priceInCents}</div>}
+        {error.priceInCents && (
+          <div className="text-destructive">{error.priceInCents}</div>
+        )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="description">Description</Label>
         <Textarea id="description" name="description" required />
-        {error.description && <div className="text-destructive">{error.description}</div>}
+        {error.description && (
+          <div className="text-destructive">{error.description}</div>
+        )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="name">File</Label>
