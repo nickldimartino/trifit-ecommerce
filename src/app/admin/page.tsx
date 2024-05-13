@@ -42,10 +42,8 @@ async function getProductData() {
     db.product.count({ where: { isAvailableForPurchase: true } }),
     db.product.count({ where: { isAvailableForPurchase: false } }),
   ]);
-  return {
-    activeCount,
-    inactiveCount,
-  };
+
+  return { activeCount, inactiveCount };
 }
 
 export default async function AdminDashboard() {
@@ -56,7 +54,7 @@ export default async function AdminDashboard() {
   ]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <DashboardCard
         title="Sales"
         subtitle={`${formatNumber(salesData.numberOfSales)} Orders`}
@@ -78,13 +76,13 @@ export default async function AdminDashboard() {
   );
 }
 
-type DashboardCardrops = {
+type DashboardCardProps = {
   title: string;
   subtitle: string;
   body: string;
 };
 
-function DashboardCard({ title, subtitle, body }: DashboardCardrops) {
+function DashboardCard({ title, subtitle, body }: DashboardCardProps) {
   return (
     <Card>
       <CardHeader>

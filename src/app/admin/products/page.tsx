@@ -15,9 +15,9 @@ import { formatCurrency, formatNumber } from "@/lib/formatters";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
   ActiveToggleDropdownItem,
@@ -73,13 +73,13 @@ async function ProductsTable() {
             <TableCell>
               {product.isAvailableForPurchase ? (
                 <>
-                  <CheckCircle2 />
                   <span className="sr-only">Available</span>
+                  <CheckCircle2 />
                 </>
               ) : (
                 <>
                   <span className="sr-only">Unavailable</span>
-                  <XCircle className="stroke-destructive"/>
+                  <XCircle className="stroke-destructive" />
                 </>
               )}
             </TableCell>
@@ -94,15 +94,12 @@ async function ProductsTable() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuItem asChild>
-                    <a
-                      download
-                      href={`/admin/products/${product.id}/download}`}
-                    >
+                    <a download href={`/admin/products/${product.id}/download`}>
                       Download
                     </a>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href={`/admin/products/${product.id}/edit}`}>
+                    <Link href={`/admin/products/${product.id}/edit`}>
                       Edit
                     </Link>
                   </DropdownMenuItem>
