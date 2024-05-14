@@ -49,15 +49,20 @@ export async function POST(req: NextRequest) {
       from: `Support <${process.env.SENDER_EMAIL}>`,
       to: email,
       subject: "Order Confirmation",
-      react: (
+      text: "hi"
+    });
+  }
+
+  return new NextResponse();
+}
+
+/* 
+react: (
         <PurchaseReceiptEmail
           order={order}
           product={product}
           downloadVerificationId={downloadVerification.id}
         />
       ),
-    });
-  }
 
-  return new NextResponse();
-}
+*/
