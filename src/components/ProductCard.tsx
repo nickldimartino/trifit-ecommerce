@@ -1,4 +1,7 @@
-import { formatCurrency } from "@/lib/formatters";
+// -------------------------------- Import Modules ---------------------------------
+// External
+import Link from "next/link";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -7,10 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import Image from "next/image";
 
+// Internal
+import { formatCurrency } from "@/lib/formatters";
+import { Button } from "./ui/button";
+
+// -------------------------------- Type Declarations ------------------------------
+// Product
 type ProductCardProps = {
   id: string;
   name: string;
@@ -19,6 +25,7 @@ type ProductCardProps = {
   imagePath: string;
 };
 
+// Product Card Component
 export function ProductCard({
   id,
   name,
@@ -47,6 +54,7 @@ export function ProductCard({
   );
 }
 
+// Product Card Skeleton for loading and rendering the template
 export function ProductCardSkeleton() {
   return (
     <Card className="overflow-hidden flex flex-col animate-pulse">
