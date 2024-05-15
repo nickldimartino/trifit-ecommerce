@@ -1,12 +1,18 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Suspense } from "react";
+
+// Internal
 import { ProductCard, ProductCardSkeleton } from "../../components/ProductCard";
 import { Button } from "@/components/ui/button";
 import db from "@/db/db";
 import { cache } from "../../lib/cache";
 import { Product } from "@prisma/client";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { Suspense } from "react";
 
+// ----------------------------------- Functions -----------------------------------
+// Returns the most popular products from the database and caches them
 const getMostPopularProducts = cache(
   () => {
     return db.product.findMany({
@@ -19,6 +25,7 @@ const getMostPopularProducts = cache(
   { revalidate: 60 * 60 * 24 }
 );
 
+// Returns the newest products from the database and caches them
 const getNewestProducts = cache(() => {
   return db.product.findMany({
     where: { isAvailableForPurchase: true },
@@ -27,6 +34,7 @@ const getNewestProducts = cache(() => {
   });
 }, ["/", "getNewestProducts"]);
 
+// Home Page Component
 export default function HomePage() {
   return (
     <main className="space-y-12">
