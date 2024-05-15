@@ -1,3 +1,5 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
 import {
   Body,
   Container,
@@ -8,9 +10,13 @@ import {
   Preview,
   Tailwind,
 } from "@react-email/components";
-import { OrderInformation } from "./components/OrderInformation";
 import React from "react";
 
+// Internal
+import { OrderInformation } from "./components/OrderInformation";
+
+// -------------------------------- Type Declarations ------------------------------
+// Order History for the provided email
 type OrderHistoryEmailProps = {
   orders: {
     id: string;
@@ -25,6 +31,7 @@ type OrderHistoryEmailProps = {
   }[];
 };
 
+// Preview for the Order History with constant information
 OrderHistoryEmail.PreviewProps = {
   orders: [
     {
@@ -54,6 +61,7 @@ OrderHistoryEmail.PreviewProps = {
   ],
 } satisfies OrderHistoryEmailProps;
 
+// Order History Email component
 export default function OrderHistoryEmail({ orders }: OrderHistoryEmailProps) {
   return (
     <Html>

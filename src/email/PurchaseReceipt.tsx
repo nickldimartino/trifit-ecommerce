@@ -1,3 +1,5 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
 import {
   Body,
   Container,
@@ -7,8 +9,12 @@ import {
   Preview,
   Tailwind,
 } from "@react-email/components";
+
+// Internal
 import { OrderInformation } from "./components/OrderInformation";
 
+// -------------------------------- Type Declarations ------------------------------
+// Order purchase receipt email
 type PurchaseReceiptEmailProps = {
   product: {
     name: string;
@@ -19,6 +25,7 @@ type PurchaseReceiptEmailProps = {
   downloadVerificationId: string;
 };
 
+// Preview for the purcahse receipt
 PurchaseReceiptEmail.PreviewProps = {
   product: {
     name: "Product name",
@@ -34,6 +41,7 @@ PurchaseReceiptEmail.PreviewProps = {
   downloadVerificationId: crypto.randomUUID(),
 } satisfies PurchaseReceiptEmailProps;
 
+// Purchase Receipt Component
 export default function PurchaseReceiptEmail({
   product,
   order,

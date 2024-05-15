@@ -1,4 +1,5 @@
-import { formatCurrency } from "@/lib/formatters";
+// -------------------------------- Import Modules ---------------------------------
+// External
 import {
   Button,
   Column,
@@ -8,14 +9,21 @@ import {
   Text,
 } from "@react-email/components";
 
+// Internal
+import { formatCurrency } from "@/lib/formatters";
+
+// -------------------------------- Type Declarations ------------------------------
+// Information for an order
 type OrderInformationProps = {
   order: { id: string; createdAt: Date; pricePaidInCents: number };
   product: { imagePath: string; name: string; description: string };
   downloadVerificationId: string;
 };
 
+// Formats the date
 const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
+// Order information component
 export function OrderInformation({
   order,
   product,
