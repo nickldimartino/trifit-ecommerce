@@ -1,3 +1,8 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
+import { MoreVertical } from "lucide-react";
+
+// Internal
 import {
   Table,
   TableBody,
@@ -15,9 +20,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
 import { DeleteDropDownItem } from "./_components/OrderActions";
 
+// ----------------------------------- Functions -----------------------------------
+// get the orders from the database
 function getOrders() {
   return db.order.findMany({
     select: {
@@ -30,6 +36,7 @@ function getOrders() {
   });
 }
 
+// Orders Page Component
 export default function OrdersPage() {
   return (
     <>
@@ -39,6 +46,7 @@ export default function OrdersPage() {
   );
 }
 
+// Orders Table Component
 async function OrdersTable() {
   const orders = await getOrders();
 

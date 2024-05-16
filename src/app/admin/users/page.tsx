@@ -1,3 +1,8 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
+import { MoreVertical } from "lucide-react";
+
+// Interal
 import {
   Table,
   TableBody,
@@ -14,9 +19,10 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
 import { DeleteDropDownItem } from "./_components/UserActions";
 
+// ----------------------------------- Functions -----------------------------------
+// Get the users from the database
 function getUsers() {
   return db.user.findMany({
     select: {
@@ -28,6 +34,7 @@ function getUsers() {
   });
 }
 
+// Users Page Component
 export default function UsersPage() {
   return (
     <>
@@ -37,6 +44,7 @@ export default function UsersPage() {
   );
 }
 
+// Users Table Component
 async function UsersTable() {
   const users = await getUsers();
 

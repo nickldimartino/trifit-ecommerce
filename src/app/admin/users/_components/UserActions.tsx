@@ -1,10 +1,15 @@
 "use client";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { useTransition } from "react";
-import { deleteUser } from "../../_actions/users";
+// -------------------------------- Import Modules ---------------------------------
+// External
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
+// Internal
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { deleteUser } from "../../_actions/users";
+
+// ----------------------------------- Components ----------------------------------
 export function DeleteDropDownItem({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
