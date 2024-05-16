@@ -1,7 +1,11 @@
+// -------------------------------- Import Modules ---------------------------------
+// Internal
 import { Nav, NavLink } from "@/components/Nav";
 
 export const dynamic = "force-dynamic";
 
+// ----------------------------------- Components ----------------------------------
+// Layout for the Admin page
 export default function AdminLayout({
   children,
 }: Readonly<{
