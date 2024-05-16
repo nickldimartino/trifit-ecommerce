@@ -1,13 +1,18 @@
 "use client";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+// -------------------------------- Import Modules ---------------------------------
+// External
 import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+
+// Internal
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import {
   deleteProduct,
   toggleProductAvailability,
 } from "../../_actions/products";
-import { useRouter } from "next/navigation";
 
+// ----------------------------------- Components -----------------------------------
 export function ActiveToggleDropdownItem({
   id,
   isAvailableForPurchase,
@@ -32,6 +37,7 @@ export function ActiveToggleDropdownItem({
   );
 }
 
+// Delete Dropdown Item Component
 export function DeleteDropdownItem({
   id,
   disabled,

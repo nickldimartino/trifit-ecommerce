@@ -1,12 +1,17 @@
+// -------------------------------- Import Modules ---------------------------------
+// Internal
 import db from "@/db/db";
 import { PageHeader } from "../../../_components/PageHeader";
-import {ProductForm} from "../../_components/ProductForm";
+import { ProductForm } from "../../_components/ProductForm";
 
+// ----------------------------------- Components -----------------------------------
+// Edit Products Page Component
 export default async function EditProductPage({
   params: { id },
 }: {
   params: { id: string };
 }) {
+  // find the product in the database
   const product = await db.product.findUnique({ where: { id } });
 
   return (

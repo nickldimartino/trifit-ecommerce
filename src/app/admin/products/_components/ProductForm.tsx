@@ -1,16 +1,22 @@
 "use client";
 
+// -------------------------------- Import Modules ---------------------------------
+// External
+import { useState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { Product } from "@prisma/client";
+import Image from "next/image";
+
+// Internal
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { formatCurrency } from "@/lib/formatters";
-import { useState } from "react";
 import { addProduct, updateProduct } from "../../_actions/products";
-import { useFormState, useFormStatus } from "react-dom";
-import { Product } from "@prisma/client";
-import Image from "next/image";
 
+// ----------------------------------- Components -----------------------------------
+// Product Form Component
 export function ProductForm({ product }: { product?: Product | null }) {
   const [error, action] = useFormState(
     product == null ? addProduct : updateProduct.bind(null, product.id),
@@ -88,9 +94,11 @@ export function ProductForm({ product }: { product?: Product | null }) {
   );
 }
 
+// Submit Button Component
 function SubmitButton() {
   const { pending } = useFormStatus();
 
+  // if the button ihas been clicked, change it to show it's been submitted
   return (
     <Button type="submit" disabled={pending}>
       {pending ? "Saving..." : "Save"}

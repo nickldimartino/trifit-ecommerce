@@ -1,6 +1,11 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
+import Link from "next/link";
+import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
+
+// Interal
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "../_components/PageHeader";
-import Link from "next/link";
 import {
   Table,
   TableBody,
@@ -10,7 +15,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import db from "@/db/db";
-import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
 import {
   DropdownMenu,
@@ -24,6 +28,8 @@ import {
   DeleteDropdownItem,
 } from "./_components/ProductActions";
 
+// ----------------------------------- Components -----------------------------------
+// Admin Products Page
 export default function AdminProductsPage() {
   return (
     <>
@@ -38,7 +44,9 @@ export default function AdminProductsPage() {
   );
 }
 
+// Render the Products Table with the products in the database
 async function ProductsTable() {
+  // get the products from the database
   const products = await db.product.findMany({
     select: {
       id: true,
@@ -50,6 +58,7 @@ async function ProductsTable() {
     orderBy: { name: "asc" },
   });
 
+  // If not products were found in the database, return no products found
   if (products.length === 0) return <p>No products found</p>;
 
   return (
