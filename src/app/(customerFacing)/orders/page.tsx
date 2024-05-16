@@ -1,5 +1,10 @@
 "use client";
 
+// -------------------------------- Import Modules ---------------------------------
+// External
+import { useFormState, useFormStatus } from "react-dom";
+
+// Internal
 import { emailOrderHistory } from "@/actions/orders";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +17,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useFormState, useFormStatus } from "react-dom";
 
+// ----------------------------------- Components ----------------------------------
+// My Orders Page
 export default function MyOrdersPage() {
   const [data, action] = useFormState(emailOrderHistory, {});
   return (
@@ -41,6 +47,8 @@ export default function MyOrdersPage() {
   );
 }
 
+// ----------------------------------- Functions -----------------------------------
+// Submit button will change it's look if it's in the process of sending
 function SubmitButton() {
   const { pending } = useFormStatus();
 

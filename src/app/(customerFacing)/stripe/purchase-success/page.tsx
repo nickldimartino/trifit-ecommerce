@@ -1,28 +1,42 @@
-import { Button } from "@/components/ui/button";
-import db from "@/db/db";
-import { formatCurrency } from "@/lib/formatters";
+// -------------------------------- Import Modules ---------------------------------
+// External
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Stripe from "stripe";
 
+// Internal
+import { Button } from "@/components/ui/button";
+import db from "@/db/db";
+import { formatCurrency } from "@/lib/formatters";
+
+// ----------------------------------- Constant ------------------------------------
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
+// ----------------------------------- Components ----------------------------------
+// Success Component
 export default async function SuccessPage({
   searchParams,
 }: {
   searchParams: { payment_intent: string };
 }) {
+  // get teh Stripe payment intent
   const paymentIntent = await stripe.paymentIntents.retrieve(
     searchParams.payment_intent
   );
+
+  // if there's no product for the intent, return not found
   if (paymentIntent.metadata.productId == null) return notFound();
 
+  // find the product of the intent in the database
   const product = await db.product.findUnique({
     where: { id: paymentIntent.metadata.productId },
   });
+
+  // if there's no product for the intent, return not found
   if (product == null) return notFound();
 
+  // check if the intent succeded
   const isSuccess = paymentIntent.status === "succeeded";
 
   return (
@@ -66,6 +80,7 @@ export default async function SuccessPage({
   );
 }
 
+// create a download verification timeframe for the product
 async function createDownloadVerification(productId: string) {
   return (
     await db.downloadVerification.create({

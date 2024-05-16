@@ -1,5 +1,20 @@
 "use client";
 
+// -------------------------------- Import Modules ---------------------------------
+// External
+import Image from "next/image";
+import { FormEvent, useState } from "react";
+import { formatCurrency } from "@/lib/formatters";
+import {
+  Elements,
+  LinkAuthenticationElement,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Internal
 import { userOrderExists } from "@/app/actions/orders";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,18 +25,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { formatCurrency } from "@/lib/formatters";
-import {
-  Elements,
-  LinkAuthenticationElement,
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import Image from "next/image";
-import { FormEvent, useState } from "react";
 
+// --------------------------------- Type Declarations ------------------------------
 type CheckoutFormProps = {
   product: {
     id: string;
@@ -33,10 +38,14 @@ type CheckoutFormProps = {
   clientSecret: string;
 };
 
+// ----------------------------------- Constant ------------------------------------
+// Save the Stripe public key
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
 );
 
+// ----------------------------------- Components ----------------------------------
+// Checkout Form
 export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
   return (
     <div className="max-w-5xl w-full mx-auto space-y-8">
@@ -66,6 +75,7 @@ export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
   );
 }
 
+// Form Component
 function Form({
   priceInCents,
   productId,
@@ -79,15 +89,22 @@ function Form({
   const [errorMessage, setErrorMessage] = useState<string>();
   const [email, setEmail] = useState<string>();
 
+  // handle the form submission
   async function handleSubmit(e: FormEvent) {
+    // prevent the page refresh
     e.preventDefault();
 
+    // if necessary data are null, don't submit the form
     if (stripe == null || elements == null || email == null) return;
 
+    // if there are data, then the submission should be loading
     setIsLoading(true);
 
+    // check if the product ahs already been purchased
     const orderExists = await userOrderExists(email, productId);
 
+    // if the product has already been purchased, notify the user
+    // and cancel the submission
     if (orderExists) {
       setErrorMessage(
         "You have already purchased this product. Try downloading it from the My Orders page"
@@ -96,6 +113,7 @@ function Form({
       return;
     }
 
+    // confirm the Stripe payment
     stripe
       .confirmPayment({
         elements,
@@ -113,6 +131,7 @@ function Form({
       .finally(() => setIsLoading(false));
   }
 
+  // create the purchase form
   return (
     <form onSubmit={handleSubmit}>
       <Card>

@@ -1,6 +1,12 @@
-import { Button } from "@/components/ui/button";
+// -------------------------------- Import Modules ---------------------------------
+// External
 import Link from "next/link";
 
+// Internl
+import { Button } from "@/components/ui/button";
+
+// ----------------------------------- Components ----------------------------------
+// Expired Component
 export default function Expired() {
   return (
     <>

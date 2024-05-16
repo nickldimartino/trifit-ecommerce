@@ -1,7 +1,10 @@
+// -------------------------------- Import Modules ---------------------------------
+// External
 import { Nav, NavLink } from "@/components/Nav";
 
 export const dynamic = "force-dynamic";
 
+// ----------------------------------- Components ----------------------------------
 export default function Layout({
   children,
 }: Readonly<{
