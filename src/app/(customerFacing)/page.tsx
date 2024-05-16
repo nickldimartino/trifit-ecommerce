@@ -37,7 +37,7 @@ const getNewestProducts = cache(() => {
 // Home Page Component
 export default function HomePage() {
   return (
-    <main className="space-y-12">
+    <main className="space-y-12 text-yellowgreen">
       <ProductGridSection
         title="Most Popular"
         productsFetcher={getMostPopularProducts}
@@ -61,7 +61,7 @@ function ProductGridSection({
       <div className="flex gap-4">
         <h2 className="text-3xl font-bold">{title}</h2>
         <Button variant="outline" asChild>
-          <Link href="/products" className="space-x-2">
+          <Link href="/products" className="space-x-2 text-caramel border-caramel border-2">
             <span>View All</span>
             <ArrowRight className="size-4" />
           </Link>

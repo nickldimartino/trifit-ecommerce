@@ -34,7 +34,7 @@ export function ProductCard({
   imagePath,
 }: ProductCardProps) {
   return (
-    <Card className="flex overflow-hidden flex-col">
+    <Card className="flex overflow-hidden flex-col border-2 border-black">
       <div className="relative w-full h-auto aspect-video">
         <Image src={imagePath} fill alt={name} />
       </div>

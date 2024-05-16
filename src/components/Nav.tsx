@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 // Nav Bar
 export function Nav({ children }: { children: ReactNode }) {
   return (
-    <nav className="bg-primary text-primary-foreground flex justify-center px-4">
+    <nav className="bg-celestialblue text-primary-foreground flex justify-center px-4">
       {children}
     </nav>
   );
@@ -26,7 +26,7 @@ export function NavLink(props: Omit<ComponentProps<typeof Link>, "className">) {
     <Link
       {...props}
       className={cn(
-        "p-4 hover:bg-secondary hover:text-secondary-foreground focus-visible:bg-secondary focus-visible:text-secondary-foreground",
+        "p-4 hover:bg-frenchblue hover:text-citrine focus-visible:bg-secondary focus-visible:text-secondary-foreground",
         pathname === props.href && "bg-background text-foreground"
       )}
     />
