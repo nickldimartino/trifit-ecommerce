@@ -23,7 +23,9 @@ Welcome to my E-Commerce Site! Using admin priveleges, I can add, edit, and dele
  
  | Description | Screenshot |
  |------------ | ------------|
- | <h3 align="center">Home Page</h3> | <img src="" width="500">
+ | <h3 align="center">Customer Products</h3> | <img src="./public/imgs/customer-products.png" width="500">
+ | <h3 align="center">Admin Dashboard</h3> | <img src="./public/imgs/admin-dashboard.png" width="500">
+ | <h3 align="center">Admin Products</h3> | <img src="./public/imgs/admin-products.png" width="500">
 
  
 </details>
