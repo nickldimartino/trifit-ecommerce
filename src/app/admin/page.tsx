@@ -101,9 +101,9 @@ type DashboardCardProps = {
 // Dashbaoard Card Component
 function DashboardCard({ title, subtitle, body }: DashboardCardProps) {
   return (
-    <Card>
+    <Card className="border border-black rounded-md">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="text-yellowgreen">{title}</CardTitle>
         <CardDescription>{subtitle}</CardDescription>
       </CardHeader>
       <CardContent>

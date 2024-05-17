@@ -46,7 +46,7 @@ export function ProductCard({
         <p className="line-clamp-4">{description}</p>
       </CardContent>
       <CardFooter>
-        <Button asChild size="lg" className="w-full">
+        <Button asChild size="lg" className="w-full bg-celestialblue text-white border border-black hover:bg-frenchblue">
           <Link href={`/products/${id}/purchase`}>Purchase</Link>
         </Button>
       </CardFooter>

@@ -35,7 +35,7 @@ export default function AdminProductsPage() {
     <>
       <div className="flex justify-between items-center gap-4">
         <PageHeader>Products</PageHeader>
-        <Button asChild>
+        <Button asChild className="bg-celestialblue text-white border border-black hover:bg-frenchblue">
           <Link href="/admin/products/new">Add Product</Link>
         </Button>
       </div>
@@ -62,7 +62,7 @@ async function ProductsTable() {
   if (products.length === 0) return <p>No products found</p>;
 
   return (
-    <Table>
+    <Table className="border border-black">
       <TableHeader>
         <TableRow>
           <TableHead className="w-0">

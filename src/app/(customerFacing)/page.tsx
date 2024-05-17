@@ -61,7 +61,7 @@ function ProductGridSection({
       <div className="flex gap-4">
         <h2 className="text-3xl font-bold">{title}</h2>
         <Button variant="outline" asChild>
-          <Link href="/products" className="space-x-2 text-caramel border-caramel border-2">
+          <Link href="/products" className="space-x-2 text-caramel border-black border-2 hover:text-caramel">
             <span>View All</span>
             <ArrowRight className="size-4" />
           </Link>

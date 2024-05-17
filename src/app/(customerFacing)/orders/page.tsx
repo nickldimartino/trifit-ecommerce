@@ -23,11 +23,11 @@ import { Label } from "@/components/ui/label";
 export default function MyOrdersPage() {
   const [data, action] = useFormState(emailOrderHistory, {});
   return (
-    <form action={action} className="max-2-xl mx-auto">
+    <form action={action} className="max-2-xl mx-auto border border-black rounded-md">
       <Card>
         <CardHeader>
-          <CardTitle>My Orders</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-yellowgreen">My Orders</CardTitle>
+          <CardDescription className="text-black">
             Enter your email and we will email you your order history and
             download links
           </CardDescription>
@@ -53,7 +53,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-full" size="lg" disabled={pending} type="submit">
+    <Button className="w-full bg-celestialblue text-white border border-black hover:bg-frenchblue" size="lg" disabled={pending} type="submit">
       {pending ? "Sending..." : "Send"}
     </Button>
   );
